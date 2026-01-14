@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Whaling Risk Scenarios",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "target_name": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "scenario_id": {
+            "type": "string"
+          },
+          "short_title": {
+            "type": "string"
+          },
+          "impersonation_category": {
+            "type": "string"
+          },
+          "likely_sender": {
+            "type": "string"
+          },
+          "attack_goal": {
+            "type": "string"
+          },
+          "work_context": {
+            "type": "string"
+          },
+          "timing": {
+            "type": "string"
+          },
+          "social_engineering_triggers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "success_conditions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "defensive_focus": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "targeted_workflow": {
+            "type": "string"
+          },
+          "involved_roles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "process_anomalies": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "scenario_id",
+          "short_title",
+          "impersonation_category",
+          "attack_goal",
+          "work_context",
+          "targeted_workflow"
+        ]
+      }
+    }
+  },
+  "required": [
+    "target_name",
+    "organization",
+    "scenarios"
+  ]
+}

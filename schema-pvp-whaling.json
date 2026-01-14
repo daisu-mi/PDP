@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Personalized Vulnerability Profile (PVP)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "target_name": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "research_interests": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "roles_and_authority": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "public_information": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "research_outputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "funding": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "profiles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "social_media": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "teaching_and_talks": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "academic_service": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "communication_habits": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "channels": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "timing_patterns": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reply_style": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "work_cycles": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "funding_related": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "semester_related": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "conference_academic": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "other_cycles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "human_network": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "coauthors_and_collaborators": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lab_members_and_students": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "committees_and_boards": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "external_partners": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "support_staff_and_secretariat": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "likely_senders": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "candidate_attack_contexts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "critical_workflows": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "target_name",
+    "organization"
+  ]
+}

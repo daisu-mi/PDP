@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Personalized Defense Profile (PDP)",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "target_name": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "high_risk_vulnerabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "time_dependent_risks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "related_work_cycles": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "related_scenarios": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "risk_description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "label",
+          "risk_description"
+        ]
+      }
+    },
+    "scenario_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "scenario_id": {
+            "type": "string"
+          },
+          "short_title": {
+            "type": "string"
+          },
+          "attack_goal": {
+            "type": "string"
+          },
+          "work_context": {
+            "type": "string"
+          },
+          "related_pvp_fields": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "roles_and_authority": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "work_cycles": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "human_network": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "research_interests": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "critical_workflows": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "support_staff_and_secretariat": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "suggested_defenses": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "scenario_id",
+          "short_title"
+        ]
+      }
+    },
+    "defense_guidelines": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "impersonation_awareness": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "goal_specific_defenses": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "context_dependent_caution": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "social_engineering_resistance": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "risk_amplifying_conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verification_and_workflow": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "target_name",
+    "organization",
+    "high_risk_vulnerabilities",
+    "defense_guidelines"
+  ]
+}

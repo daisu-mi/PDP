@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Email Risk Analysis Result",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "overall_assessment": {
+      "type": "string",
+      "enum": [
+        "safe_or_low_risk",
+        "suspicious",
+        "highly_suspicious"
+      ],
+      "description": "Overall risk judgment for this email in the context of the target's PDP, including their organizational authority and normal approval workflows."
+    },
+    "risk_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "Numeric risk score from 0 to 100 reflecting how dangerous this email appears for the specific target, considering their vulnerabilities, authority, and workflows."
+    },
+    "matched_scenarios": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "scenario_id": {
+            "type": "string",
+            "description": "Identifier of the matched risk scenario from the PDP."
+          },
+          "match_strength": {
+            "type": "string",
+            "enum": [
+              "weak",
+              "moderate",
+              "strong"
+            ],
+            "description": "Qualitative strength of the match between this email and the scenario."
+          },
+          "match_reasons": {
+            "type": "string",
+            "description": "Short textual explanation of why the email matches this scenario, for example overlap in sender role, timing, or requested actions."
+          }
+        },
+        "required": [
+          "scenario_id",
+          "match_strength",
+          "match_reasons"
+        ],
+        "description": "Mapping from this email to a single PDP risk scenario."
+      },
+      "description": "List of risk scenarios from the PDP that are relevant to this email, including how strongly each scenario matches and why."
+    },
+    "pdp_links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "high_risk_vulnerabilities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "High-risk vulnerabilities from the PDP that are directly implicated by this email. For whaling, this should include vulnerabilities related to the target's organizational authority, decision powers, and control over critical workflows."
+        },
+        "defense_guidelines": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "impersonation_awareness": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "PDP guidelines of this category that are relevant to this particular email."
+            },
+            "goal_specific_defenses": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "PDP guidelines of this category that are relevant to this particular email."
+            },
+            "context_dependent_caution": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "PDP guidelines of this category that are relevant to this particular email."
+            },
+            "social_engineering_resistance": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "PDP guidelines of this category that are relevant to this particular email."
+            },
+            "risk_amplifying_conditions": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "PDP guidelines of this category that are relevant to this particular email."
+            },
+            "verification_and_workflow": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "PDP guidelines about verification steps, approval chains, and workflow constraints that apply to this email. This is especially important for whaling, where attackers may try to exploit or bypass the target's authority."
+            }
+          },
+          "description": "Relevant defenses and precautions from the PDP that apply to this email."
+        }
+      },
+      "required": [
+        "high_risk_vulnerabilities",
+        "defense_guidelines"
+      ],
+      "description": "Subset of PDP elements that are most relevant for explaining the risk assessment of this email."
+    },
+    "reasoning_summary": {
+      "type": "string",
+      "description": "Concise narrative explanation of the risk assessment, explicitly referring to PDP vulnerabilities, authority and workflow information, matched scenarios, and any anomalies in approval chains or requested actions."
+    },
+    "recommended_actions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Concrete defensive next steps for the target or security staff, such as verification steps, escalation to specific roles, or changes to workflows, phrased from a defensive perspective only."
+    }
+  },
+  "required": [
+    "overall_assessment",
+    "risk_score",
+    "matched_scenarios",
+    "pdp_links",
+    "reasoning_summary",
+    "recommended_actions"
+  ]
+}
